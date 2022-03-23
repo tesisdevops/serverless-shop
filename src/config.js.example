@@ -8,3 +8,15 @@ const config = {
 };
 
 export default config;
+
+const config = {
+  stripe: {
+    apiKey: 'pk_test_51KTe0wIYKj3tTyT0yJzplYCKWK7nofCnv1X0OOsiV95qrsg8mP5wU9IXbj8ZSkWCmpLDoVQqdsjGr6TW3Q7aVlYe00NkVY7D6M',
+    checkoutUrl: 'INSERT AWS LAMBDA ENDPOINT FOR CHARGES',
+    productsUrl: 'arn:aws:lambda:us-east-1:038894586456:function:fetchProducts',
+    currency: 'EUR',
+  },
+};
+
+export default config;
+

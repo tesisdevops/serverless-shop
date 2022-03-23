@@ -19,11 +19,13 @@ class ProductList extends Component {
   }
 
   async fetchProducts() { // Token returned from Stripe
+    console.log('hola')
     const res = await fetch(config.stripe.productsUrl, { // Backend API url
       method: 'GET'
     });
     const response = await res.json();
-    const products = response.data;
+    console.log(response)
+    const products = response;
 
     this.setState({
       products
@@ -35,11 +37,12 @@ class ProductList extends Component {
 
     const productList = products.map((product, index) => {
       return (
-          <Product id={product.id}
+          <Product key={product._id}
+                    id={product._id}
                    name={product.name}
                    caption={product.caption}
                    description={product.description}
-                   skus={product.skus.data}
+                   skus={product.skus}
                    images={product.images} />
       );
     });

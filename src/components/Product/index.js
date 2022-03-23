@@ -25,19 +25,19 @@ class Product extends Component {
                   src={image} width="75"/>
     });
 
-    const skuList = skus.map((sku, index) => {
+    // const skuList = skus.map((sku, index) => {
 
-      const {attributes} = sku;
+    //   const {attributes} = sku;
 
-      return (
-          <div key={sku.id}
-               className={"col-xs-2 product-sku " + (currentSku.id === sku.id
-                   ? 'selected' : '')}
-               onClick={() => this.setState({currentSku: sku})}>
-            {attributes.size}
-          </div>
-      );
-    });
+    //   return (
+    //       <div key={sku.id}
+    //            className={"col-xs-2 product-sku " + (currentSku.id === sku.id
+    //                ? 'selected' : '')}
+    //            onClick={() => this.setState({currentSku: sku})}>
+    //         {attributes.size}
+    //       </div>
+    //   );
+    // });
 
     const price = currentSku.price + "";
     const euros = price.substring(0, price.length - 2);
@@ -61,23 +61,11 @@ class Product extends Component {
             <h1 className="product-caption">{caption}</h1>
             <div
                 className="product-price">
-              <div>{euros}.{cents} {currentSku.currency.toUpperCase()}</div>
               <div className="product-taxes">inkl MwSt.</div>
             </div>
             <p className="product-description">{description}</p>
             <hr/>
-            <div className="product-sizes-list row">
-              {skuList}
-            </div>
             <hr/>
-            <PayButton disabled={currentSku.inventory.quantity < 1}
-                       amount={price} sku={currentSku} name={name}
-                       caption={caption}/>
-            {currentSku.attributes ?
-                <div className="product-selected-size">
-                  Größe: {currentSku.attributes.size} |
-                  Lager: {currentSku.inventory.quantity} St.
-                </div> : null}
           </div>
         </div>
     );
